@@ -1,0 +1,31 @@
+#books-list
+  - books.each do |book|
+    .col-sm-6
+      .crud-record
+        .col-sm-5
+          img.book-img src=book.thumbnail height='250px'
+        .col-sm-7.book-info
+          .body
+            .row
+              h3= link_to book.title, book_path(book.id)
+              h4= "by #{book.author}"
+              p.desc= book.description.truncate(300)
+          .footer
+            .pull-right.actions
+              - available = book.available > 0 
+              - if available
+                button.btn.btn-primary data-target="#modal-request-#{book.id}" data-toggle='modal' href='#'
+                  = 'Request'
+                  = render 'request_modal', book: book, request: Request.new
+              - else
+                //TODO: place hold
+                button.btn.btn-primary disabled=true
+                  = 'Not Available'
+              - if current_user.super_admin?
+                button.btn.btn-default
+                  = link_to edit_book_path(book.id) do
+                    i.fa.fa-pencil style='font-size: 14px'
+                button.btn.btn-danger data-target="#modal-delete-#{book.id}" data-toggle='modal' href='#'  
+                  i.fa.fa-trash style='font-size: 14px'
+                = render 'delete_modal', book: book
+          

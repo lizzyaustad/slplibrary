@@ -1,0 +1,11 @@
+.books#show-books
+  img.book-image src=@book.thumbnail.gsub('-M', '-L')
+
+  h2= @book.title
+  h3= @book.author
+
+  br/
+  p.book-description 
+    = @book.description.html_safe
+  br/
+

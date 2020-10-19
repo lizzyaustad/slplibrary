@@ -1,0 +1,50 @@
+.requests
+  h3= 'Requests'
+  - if @requests.count > 0
+    table.table.table-striped.table-hover
+      thead.thead-dark
+        tr
+          - if current_user.super_admin?
+            th
+              input#check-all type='checkbox'
+          th= 'Book'
+          - if current_user.super_admin?
+            th= 'Requester'
+          th= 'Start'
+          th= 'Due'
+          th= 'Status'
+          th
+      
+      tbody
+        - @requests.each do |request|
+          tr class=request.status
+            - if current_user.super_admin?
+              td 
+                input type='checkbox' value=request.id
+            td= Book.find_by(id: request.book_id).title
+            - if current_user.super_admin?
+              td= User.find_by(id: request.requested_by).name
+            td= request.start_date.strftime('%b %-d %Y')
+            td= request.end_date.strftime('%b %-d %Y')
+            td= request.status
+            td.text-center
+              button.btn.btn-dark id="action-btn-#{request.id}" 
+                i.fa.fa-ellipsis-h style='font-size: 12px'
+              .action_dropdown id="actions-#{request.id}"
+                a.btn.btn-default data-target="#modal-return-#{request.id}" data-toggle='modal' href='#'
+                  = 'Return'
+                a.btn.btn-default data-target="#modal-Renew-#{request.id}" data-toggle='modal' href='#'
+                  = 'Renew'
+                  / = render 'request_modal', book: book, request: Request.new
+              javascript:
+                $(`#action-btn-#{request.id}`).click(function() {
+                  $(`#actions-#{request.id}`).toggle();
+                })
+      
+    javascript:
+      $('#check-all').click(function(){
+        $(':checkbox').prop('checked', this.checked);
+      });
+
+  - else
+    = 'You have not checked out any books yet'

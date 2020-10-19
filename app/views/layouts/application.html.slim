@@ -1,0 +1,37 @@
+html
+  head
+    title SLP Anti-Racist Library
+    meta name="viewport" content="width=device-width, initial-scale=1"
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = favicon_link_tag asset_path('books.png')
+    = stylesheet_link_tag 'https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap'
+  body
+    .row#header
+      - if user_signed_in?
+        .pull-right
+          = link_to('Sign Out', destroy_user_session_path, method: :get)
+      .text-center.title
+        h3
+          = link_to 'St. Louis Park Anti-Racist Lending Library', root_path 
+        / br
+        - if current_user&.super_admin?
+          h5
+            = link_to 'Collection', root_path
+            span.break= '|'
+            = link_to 'Users', users_path
+            span.break= '|'
+            = link_to 'Requests', requests_path
+        - else
+          h5
+            = link_to 'Library', root_path
+            span.break= '|'
+            = link_to 'My Requests', requests_path
+    .row.text-center
+      - if notice
+        p.notice= notice
+      - if alert
+        p.alert= alert
+    #wrapper
+      #page-content-wrapper
+        .container-fluid= yield

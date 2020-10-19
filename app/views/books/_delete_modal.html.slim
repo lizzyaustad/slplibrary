@@ -1,0 +1,14 @@
+.delete-book.modal.fade.in id="modal-delete-#{book.id}"
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close type='button' data-dismiss='modal'
+          span aria-hidden='true' x
+          span.sr-only = 'Close'
+        h4.modal-title style='text-align:left'
+          = 'Remove Book'
+        .modal-body.text-left 
+          p= 'Are you sure you want to remove this book from the library collection?'
+        .modal-footer
+          = link_to 'Remove', book_path(id: book.id), method: :delete, class: 'btn btn-danger btn-large'
+          button.btn.btn-temp.btn-large data-dismiss='modal' type='button' = 'Cancel'

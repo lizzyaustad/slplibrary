@@ -1,0 +1,15 @@
+.users
+  h3= 'Users'
+  table.table.table-striped.table-hover.table-bordered
+    thead.thead-dark
+      tr
+        th= 'First'
+        th= 'Last'
+        th= 'Email'
+    
+    tbody
+      - @users.each do |user|
+        tr
+          td= user.first_name
+          td= user.last_name
+          td= user.email

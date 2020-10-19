@@ -1,0 +1,210 @@
+@import "bootstrap-sprockets";
+@import 'bootstrap';
+@import 'custom_variables';
+@import 'font-awesome';
+
+body {
+  background-image: linear-gradient(#feffff, #cceeff);
+  font-family: sans-serif;
+}
+
+.btn-primary {
+  background-color: $primary-blue;
+  border-color: $primary-blue;
+}
+
+.btn-dark {
+  background-color: #ddd;
+}
+
+#page-content-wrapper {
+  width: 90%;
+  padding: 20px;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.nav-item {
+  padding: 9px;
+  font-size: 17px;
+  &.active {
+    a {
+      color: $primary-blue;
+    }
+  }
+}
+
+a {
+  color: $link-blue;
+  &:hover {
+    color: $primary-blue;
+  }
+}
+
+#header {
+  width: 100%;
+  margin: auto;
+  padding: 15px;
+  background-color: slategray;
+  color: aliceblue;
+
+  .title {
+    font-family: 'Ubuntu', sans-serif;
+    a {
+      color: aliceblue;
+    }
+  }
+}
+
+#banner {
+  width: 300px;
+  margin: auto;
+  padding: 15px;
+}
+
+.alert, .notice {
+  width: 40%;
+  margin: auto;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.alert, #error_explanation {
+  @extend .alert-danger;
+}
+
+.notice {
+  @extend .alert-info;
+}
+
+.crud-record {
+  margin-bottom: 20px;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #f7f7f7;
+  border: 1px solid #dddddd;
+  height: 300px;
+
+  body {
+    padding-right: 10px;
+  }
+
+  .book-img {
+    padding: 10px;
+    float: right;
+  }
+
+  .footer {
+    bottom: 10px;
+    position: absolute;
+    width: 92%;
+  }
+
+  .book-info {
+    position: relative;
+    height: 300px;
+
+    .desc {
+      padding: 5px;
+    }
+  }
+
+  .actions {
+    button {
+      height: 30px;
+      font-size: 12px;
+    }
+  }
+}
+
+fieldset.group  { 
+  margin: 0; 
+  padding: 0; 
+  margin-bottom: 1.25em; 
+  padding: .125em; 
+  margin-left: 60px;
+} 
+
+ul.checkbox  { 
+  margin: 0; 
+  padding: 0; 
+  list-style: none; 
+} 
+
+ul.checkbox li input { 
+  margin-right: .25em; 
+  margin-left: 0px !important;
+} 
+
+ul.checkbox li { 
+  border: 1px transparent solid; 
+  display:inline-block;
+  width:10em;
+} 
+
+ul.checkbox li label { 
+  margin-left: 0px !important; 
+} 
+
+table {
+  background-color: #eee;
+}
+
+.new-book {
+  margin-top: 20px;
+}
+
+.book-description {
+  white-space: pre-wrap;
+}
+
+.book-image {
+  float: right;
+  margin-left: 20px;
+}
+
+.break {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  left: 105%;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.action_dropdown {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.action_dropdown a {
+  color: black;
+  margin-bottom: 5px;
+  text-decoration: none;
+  display: block;
+  &:hover {background-color: #ddd;}
+}
+

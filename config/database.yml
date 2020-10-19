@@ -1,0 +1,21 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  username: root
+  password:
+  port: 3306
+
+development:
+  <<: *default
+  database: development_db_name
+  host: 127.0.0.1
+
+test:
+  <<: *default
+  database: test_db_name
+  host: 127.0.0.1
+
+production:
+  <<: *default
+  database: production_db_name
+  host: ENV['DATABASE_URL']

@@ -1,0 +1,13 @@
+h4= 'Book Requested'
+
+p
+  strong= @book.title
+  = ' has been requested by '
+  strong= @user.name
+  br/
+  br/
+  = "Check out date: #{@request.start_date.strftime('%b %-d %Y')}"
+  br/
+  = "Due date: #{@request.end_date.strftime('%b %-d %Y')}"
+  br/
+  = "Contact: #{@user.email}"

@@ -1,0 +1,16 @@
+.request-book.modal.fade.in id="modal-request-#{book.id}"
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close type='button' data-dismiss='modal'
+          span aria-hidden='true' x
+          span.sr-only = 'Close'
+        h4.modal-title style='text-align:left'
+          = 'Request Book'
+        .modal-body.text-left 
+          p= 'Are you sure you want to request this book from the library collection?'
+        .modal-footer
+          = form_for request do |f|
+            = f.hidden_field :book_id, value: book.id
+            = f.submit 'Request', class: 'btn btn-primary btn-large'
+          button.btn.btn-temp.btn-large data-dismiss='modal' type='button' = 'Cancel'

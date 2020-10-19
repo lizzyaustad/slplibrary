@@ -1,0 +1,8 @@
+.books
+  .row
+    - if current_user.super_admin?
+        .pull-right
+          = button_to 'Add Book +', new_book_path, method: :get, class: 'btn btn-primary new-book'
+
+  .row
+    = render 'books', books: @books
